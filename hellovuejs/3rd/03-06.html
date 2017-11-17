@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="ex">
+    x : <input type="text" v-model="x"><br>
+    y : <input type="text" v-model="y"><br>
+    덧셈 결과 : {{sum}}
+</div>
+<script>
+    var vm = new Vue({
+        el: "#ex",
+        data: {
+            x: 0,
+            y: 0
+        },
+        computed : {
+            sum : function () {
+                var result = Number(this.x) + Number(this.y);
+                if (isNaN(result)) return 0;
+                else return result;
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

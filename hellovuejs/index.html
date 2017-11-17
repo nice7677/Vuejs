@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Welcome to Vue</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<style>
+    #list {
+        width: 400px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    #list td, #list th {
+        border: 1px solid black;
+        text-align: center;
+    }
+
+    #list > thead > tr {
+        color: yellow;
+        background-color: purple;
+    }
+</style>
+<body>
+
+<div id="ex">
+    <table id="list">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>이름</th>
+            <th>전화번호</th>
+            <th>주소</th>
+        </tr>
+        </thead>
+        <tbody id="contacts">
+        <tr v-for="contact in contacts">
+            <td>{{contact.no}}</td>
+            <td>{{contact.name}}</td>
+            <td>{{contact.tel}}</td>
+            <td>{{contact.address}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+
+</html>
+
+
+<script>
+    var model = {
+        "pageno" : 1,
+        "pagesize" : 10,
+        "totalcount" : 100,
+        "contacts" : [
+            { "no" : 100, "name":"설현","tel":"010-1313-1232", "address":"서울"},
+            { "no" : 99, "name":"김치","tel":"010-1313-1232", "address":"서울"},
+            { "no" : 98, "name":"년이다","tel":"010-1313-1232", "address":"경기"},
+            { "no" : 97, "name":"호호","tel":"010-1313-1232", "address":"제주"},
+            { "no" : 96, "name":"혜리","tel":"010-1313-1232", "address":"경남"},
+            { "no" : 95, "name":"하니","tel":"010-1313-1232", "address":"부산"},
+            { "no" : 94, "name":"성소","tel":"010-1313-1232", "address":"울산"},
+            { "no" : 93, "name":"지아","tel":"010-1313-1232", "address":"대구"},
+            { "no" : 92, "name":"정연","tel":"010-1313-1232", "address":"창원"},
+            { "no" : 91, "name":"모모","tel":"010-1313-1232", "address":"대전"},
+            { "no" : 90, "name":"사나","tel":"010-1313-1232", "address":"동해"},
+        ]
+    }
+
+    var list = new Vue({
+        el : "#ex",
+        data : model
+    })
+</script>
