@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #ex {
+            height: 98vh;
+            min-height: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="ex" v-on:contextmenu.prevent="ctxStop"
+     @mouseup.left="leftMouse" @mouseup.right="rightMouse">
+    <div>
+        Left Click : 왼쪽으로<br>
+        Right Click : 오른쪽으로
+    </div>
+    <img src="https://pbs.twimg.com/profile_images/1768165092/twitter_icon_400x400.png" v-bind:style="{
+    position:'absolute', left : pos.left + 'px', top : pos.top + 'px'
+}">
+</div>
+<script>
+    var vm = new Vue({
+        el: "#ex",
+        data: {
+            pos: {
+                left: 100,
+                top: 100
+            }
+        },
+        methods : {
+            ctxStop : function (e) {
+
+            },
+            leftMouse : function (e) {
+                if (this.pos.left > 30)
+                    this.pos.left -= 30;
+                console.log("Move Left!!");
+            },
+            rightMouse : function (e) {
+                this.pos.left += 30;
+                console.log("Move Right!!")
+            }
+        }
+    })
+</script>
+</body>
+</html>
