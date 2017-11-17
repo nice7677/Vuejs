@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #ex {
+            height: 98vh;
+            min-height: 100%;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="ex" v-on:contextmenu.prevent="ctxStop">
+    <a href="https://facebook.com" @click="confirmFB">페이스북</a>
+</div>
+<script>
+    var vm = new Vue({
+        el : '#ex',
+        methods :{
+            ctxStop : function (e) {
+            },
+            confirmFB : function (e) {
+                if (!confirm("페이스북으로 이동할까요?")){
+                    e.preventDefault();
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

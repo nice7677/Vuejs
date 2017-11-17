@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<style>
+    .layout1 {
+        margin: 30px;
+    }
+</style>
+<body>
+
+<div id="ex" class="container layout1">
+
+    <p>
+        <input type="text" v-model="amount" class="form-control">
+    </p>
+    <p>
+        <button id="deposit" v-on:click="deposit" class="btn btn-primary">예금
+        </button>
+        <button id="witdraw" v-on:click="withdraw" class="btn btn-primary">인출
+        </button>
+    </p>
+    <h3>계좌 잔고 : {{balance}}</h3>
+
+</div>
+<script>
+    var vm = new Vue({
+        el: '#ex',
+        data: {
+            amount: 0,
+            balance: 0
+        },
+        /*
+                el 엘리먼트 선언부분
+                data는 데이터선언
+                methods는 메소드선언 부분
+                하나씩 알아가면됨
+        */
+        methods: {
+            deposit: function (e) {
+                var amt = parseInt(this.amount);
+                if (amt <= 0) {
+                    alert("0보다 큰 값을 예금 해야 합니다.");
+                } else {
+                    this.balance += amt;
+                }
+            },
+            withdraw: function (e) {
+                var amt = parseInt(this.amount);
+                if (amt <= 0) {
+                    alert("0보다 큰 값을 인출할 수 있습니다.");
+                } else if (amt > this.balance) {
+                    alert("잔고보다 많은 금액을 인출할수 없습니다.")
+                } else {
+                    this.balance -= amt;
+                }
+            }
+        }
+    })
+</script>
+</body>
+
+</html>
