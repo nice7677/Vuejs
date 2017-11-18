@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="ex">
+        <button id="btn1" v-bind:style="[myColor, myLayout]">버튼1</button>
+    </div>
+    <script>
+        var vm = new Vue({
+            el : "#ex",
+            data : {
+                myColor : {
+                    backgroundColor : "purple",
+                    color : "yellow"
+                },
+                myLayout : {
+                    width : "150px",
+                    height : "80px",
+                    textAlign : "center"
+                }
+            }
+        })
+    </script>
+</body>
+</html>
