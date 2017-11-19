@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<template id="listTemplate">
+    <li>{{message}}</li>
+</template>
+<script>
+    Vue.component('list-component', {
+        template: "#listTemplate",
+        props: {
+            message: {type: String, default: "안녕하세요"},
+            count: {type: Number, required: true},
+            countries : {
+                type : Array,
+                default : function () {
+                    return ['대한민국'];
+                }
+            }
+        }
+    });
+</script>
+<body>
+<div id="app">
+    <ul>
+        <list-component message="Hello" v-bind:count="100"
+                        v-bind:countries="['미국','영국','호주']"></list-component>
+        <list-component message="신짜오" :count="21" :countries="['베트남']"></list-component>
+        <list-component message="대만넘버원" :countries="['중국','대만']"></list-component>
+        <list-component :count="1000"></list-component>
+    </ul>
+</div>
+</body>
+<script>
+    Vue.config.devtools = true;
+    var vm = new Vue({
+        el: "#app"
+    })
+    /*
+          Vue.component를 이용해 컴포넌트에
+          template과 props를 설정한다.
+          그리고 마지막에 new Vue로 불러온다.. 맞니?
+    */
+</script>
+</html>

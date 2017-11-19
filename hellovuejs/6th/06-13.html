@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<template id="listTemplate">
+    <li>{{myMessage}}</li>
+</template>
+<script>
+    Vue.component('list-component', {
+        template: "#listTemplate",
+        props: ['myMessage']
+    })
+</script>
+<body>
+<div id="app">
+    <ul>
+        <list-component my-Message="Hello"></list-component>
+        <list-component my-Message="신짜오"></list-component>
+        <list-component my-Message="대만넘버원"></list-component>
+   <!--
+        여기서 주의 해야할점은 myMessage로 변경되었는데
+        두 단어 이상이 연결되었는데 두번째 이후 단어의 첫 글자만 대문자로
+        표기하는 카멜 표기법을 사용했다.
+        근데 값이 안넘어간다 왜냐하면 카멜표기를 사용한 태그에는
+        - 바를 넣어 케밥표기법을 사용해 표기해야한다
+        이렇게 말이다 my-Message
+   -->
+    </ul>
+</div>
+</body>
+<script>
+    Vue.config.devtools = true;
+    var vm = new Vue({
+        el: "#app"
+    })
+    /*
+          Vue.component를 이용해 컴포넌트에
+          template과 props를 설정한다.
+          그리고 마지막에 new Vue로 불러온다.. 맞니?
+    */
+</script>
+</html>

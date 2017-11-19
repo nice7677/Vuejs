@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<template id="timeTemplate">
+    <div>
+        <span>{{nowTS}}</span>
+        <button v-on:click="timeClick">Current Time</button>
+    </div>
+</template>
+<script>
+    // 이렇게하면 동시에 두개가 실행되는데
+    // 이유는 전역변수로 할당을 하게되면 데이ㅓ 옵션이 모두 동일한 객체를 참조하게 되기 때문임.
+    var data = {nowTS: 0};
+    Vue.component('time-component', {
+        template: "#timeTemplate",
+        data: function () {
+            return data;
+        },
+        methods : {
+            timeClick : function (e) {
+                this.nowTS = (new Date()).getTime();
+            }
+        }
+    })
+</script>
+<body>
+<div id="app">
+    <time-component></time-component>
+    <time-component></time-component>
+</div>
+</body>
+<script>
+    Vue.config.devtools = true;
+    var vm = new Vue({
+        el : "#app"
+    })
+</script>
+</html>

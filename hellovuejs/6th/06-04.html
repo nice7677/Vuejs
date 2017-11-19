@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<template id="helloTemplate">
+    <div>hello world!</div>
+</template>
+<script>
+    Vue.component('hello-component', {
+        template: '#helloTemplate'
+    })
+</script>
+<body>
+<div id="app">
+    <hello-component></hello-component>
+    <hello-component></hello-component>
+    <hello-component></hello-component>
+</div>
+
+<script>
+    Vue.config.devtools = true;
+    //Vue devtool 사용하기 ture
+    var vm = new Vue({
+        el : '#app'
+    })
+</script>
+</body>
+</html>
